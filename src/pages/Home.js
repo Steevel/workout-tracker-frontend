@@ -7,11 +7,13 @@ import WorkoutForm from '../components/WorkoutForm'
 
 const Home = () => {
 
+    console.log(process.env);
+
     const { workouts, dispatch } = useWorkoutsContexts()
 
     useEffect(() => {
         const fetchWorkout = async () => {
-            const response = await fetch('/api/workouts/')
+            const response = await fetch(process.env.REACT_APP_API_URI)
             const json = await response.json()
 
             if (response.ok) {
